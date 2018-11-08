@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+*{
+  margin: 0;
+  padding: 0;
+}
 .App {
-  text-align: center;
+  display: flex;
+  flex: 1;
+  font-family: 'Amatic SC', cursive;
+  font-size: 1em;
+  width: 100%;
+
 }
 
 .App-logo {

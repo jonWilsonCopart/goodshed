@@ -1,0 +1,38 @@
+.header {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background-color: rgba(0,0,0,0.3);
+    font-size: 1.8rem;
+}
+
+.nav-bar {
+    display: inline;
+
+}
+
+#header-title{
+    display: inline;
+    position: absolute;
+    left: 0;
+    color: white;
+    font-size: 5rem;
+    margin: 0;
+    margin-left: 2%;
+
+}
+ul{
+    position: absolute;
+    right: 0;
+    margin-right: 5%;
+    text-decoration: none;
+    color: white;
+    margin-top: 2.2%;
+}
+li{
+    display: inline;
+    padding: 15px;
+}

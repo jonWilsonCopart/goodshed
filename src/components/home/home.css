@@ -1,0 +1,13 @@
+
+.home-bg {
+    background-image: url('../../assets/imgs/bg-1.png');
+    display: block;
+    height: 950px;
+    width: 100%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+

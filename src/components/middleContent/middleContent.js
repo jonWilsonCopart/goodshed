@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../logo/logo.js'
-import './middleContent.css'
+import styles from  './middleContent.module.css'
 
 
 class MiddleContent extends Component {
@@ -26,11 +26,11 @@ class MiddleContent extends Component {
   render() {
 
     return (
-      <div className={"middle-container"}>
-        <div className={"middle-bg"}>
+      <div className={styles["middle-container"]}>
+        <div className={styles["middle-bg"]}>
         </div>
-        <div className={"middle-sub-section"}>
-          <p className={"middle-title"}>This is just test text</p>
+        <div className={styles["middle-sub-section"]}>
+          <p className={styles["middle-title"]}>This is just test text</p>
           <p style={{fontSize: '3rem'}}>Additional extra text to <span id={'redText'}>see the idea...</span></p>
         </div>
 

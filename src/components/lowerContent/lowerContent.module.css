@@ -1,0 +1,40 @@
+.lower-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    background-color: #212121;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.lower-bg{
+    background-image: url('../../assets/imgs/DSCF2595.jpg');
+    color: white;
+    flex: 1;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 20px;
+
+}
+
+.lower-title {
+    font-size: 7rem;
+}
+
+.lower-sub-section{
+    flex: 1;
+    align-self: center;
+    max-height: 250px;
+    margin-right: 3px;
+    color: black;
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+#redText{
+    color: red;
+}

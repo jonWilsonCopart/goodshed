@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 // File Imports
 
-import './header.css'
+import styles from './header.module.css'
 
 
 class Header extends Component {
   render() {
     return (
-      <div className="header">
+      <div className={styles.header}>
         <div>
-        <p id="header-title">GoodShed</p>
-          <div className="navBar">
+        <p className={styles.headerTitle}>GoodShed</p>
+          <div className={styles.navBar}>
           <ul>
             <li>Home</li>
             <li>Gear</li>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../logo/logo.js'
-import './topContent.css'
+import styles from './topContent.module.css'
 
 
 class TopContent extends Component {
@@ -28,11 +28,17 @@ class TopContent extends Component {
       width: this.state.width / 2,
       height: this.state.width / 3.5
     };
+    const logoStyle = {
+      width: '25%',
+      position: 'absolute',
+      top: '2',
+      left: '36.5%'
+    };
 
     return (
-      <div className="inner-border" style={innerBorder}>
-        <Logo />
-        <p className="top-title">This is just test text</p>
+      <div className={styles["inner-border"]} style={innerBorder}>
+        <Logo imageStyle={logoStyle}/>
+        <p className={styles["top-title"]}>This is just test text</p>
         <p style={{fontSize: '3rem'}}>Additional extra text to <span id={'redText'}>see the idea...</span></p>
       </div>
     );

@@ -9,12 +9,12 @@
     font-size: 1.8rem;
 }
 
-.nav-bar {
+.navBar {
     display: inline;
 
 }
 
-#header-title{
+.headerTitle{
     display: inline;
     position: absolute;
     left: 0;

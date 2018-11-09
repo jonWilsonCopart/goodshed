@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './lowerContent.css'
+import styles from  './lowerContent.module.css'
+import GuitarPick from '../guitarPick/guitarPick';
 
 
 class LowerContent extends Component {
@@ -25,13 +26,17 @@ class LowerContent extends Component {
   render() {
 
     return (
-      <div className={"lower-container"}>
-        <div className={"lower-bg"}>
-        </div>
-        <div className={"lower-sub-section"}>
-          <p className={"lower-title"}>This is just test text</p>
-          <p style={{fontSize: '3rem'}}>Additional extra text to <span id={'redText'}>see the idea...</span></p>
-        </div>
+      <div className={styles["lower-container"]}>
+          <GuitarPick
+            width={'400px'}
+            height={'400px'}
+            color={"#FFFFFF"}
+            text={"Idea 1"}
+            isFlex={true}
+          />
+          <GuitarPick width={'400px'} height={'400px'} text={"Idea 2"} isFlex={true}/>
+          <GuitarPick width={'400px'} height={'400px'} color={"#FFFFFF"} text={"Idea 3"} isFlex={true}/>
+
 
       </div>
     );

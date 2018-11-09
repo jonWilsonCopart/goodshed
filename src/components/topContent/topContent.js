@@ -39,7 +39,7 @@ class TopContent extends Component {
       <div className={styles["inner-border"]} style={innerBorder}>
         <Logo imageStyle={logoStyle}/>
         <p className={styles["top-title"]}>This is just test text</p>
-        <p style={{fontSize: '3rem'}}>Additional extra text to <span id={'redText'}>see the idea...</span></p>
+        <p style={{fontSize: '3rem'}}>Additional extra text to <span className={styles['redText']}>see the idea...</span></p>
       </div>
     );
   }

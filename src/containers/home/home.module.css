@@ -1,0 +1,166 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: wrap;
+    font-size: 1em;
+    position: relative;
+    z-index: auto;
+}
+
+.homeBG {
+
+}
+
+.topBG{
+
+}
+
+.middleContainer{
+    flex: 1;
+}
+
+.mainContent{
+    height: 100vh;
+    flex: 4;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../assets/imgs/bg-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scrollView{
+    flex: 4;
+    overflow: scroll;
+
+}
+
+.noScrollView{
+    flex: 4;
+    overflow: hidden;
+}
+
+.mainContent2{
+    height: 100vh;
+    /*width: 100%;*/
+    /*flex: 4;*/
+    display: flex;
+    padding: 1%;
+    flex-direction: column;
+    background-image: url("../../assets/imgs/christian_portrait.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mc2Left{
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /*background-image: url("../../assets/imgs/christian_portrait.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: contain;*/
+    flex: 1;
+}
+
+.mainContent3{
+    height: 100vh;
+    flex: 4;
+    display: flex;
+    padding: 2%;
+    padding-top: 5%;
+    flex-direction: column;
+    background-image: url("../../assets/imgs/bg-4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContent4{
+    height: 100vh;
+    /*width: 100%;*/
+    /*flex: 4;*/
+    display: flex;
+    padding: 1%;
+    flex-direction: column;
+    background-image: url("../../assets/imgs/bg-5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mainContent5{
+    height: 100vh;
+    /*width: 100%;*/
+    /*flex: 4;*/
+    display: flex;
+    padding: 1%;
+    flex-direction: column;
+    background: linear-gradient(135deg, #121a37, #000000);
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.mainContent6{
+    height: 100vh;
+    flex: 1;
+    /*width: 100%;*/
+    /*flex: 4;*/
+    display: flex;
+    padding: 2%;
+    background-image: url("../../assets/imgs/media_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.fullDrkBG{
+    height: 80vh;
+    /*width: 80vw;*/
+    flex: 1;
+    display: flex;
+    background-color: rgba(1,1,1,0.5);
+    border-width: 1;
+    border-color: #687eff;
+    border-radius: 5;
+}
+
+.fullHeightWidth{
+    height: 80vh;
+    width: 70vw;
+}
+
+.cphoto{
+    /*width: 50%;*/
+    align-self: center;
+}
+
+.fullWidth{
+    width: 100%;
+}
+.divider1{
+    background-color: #687eff;
+    height: 1px;
+}
+
+.eqbars2{
+    width: 20%;
+    margin-top: 5%;
+}

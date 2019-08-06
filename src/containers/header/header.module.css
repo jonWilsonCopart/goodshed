@@ -1,0 +1,50 @@
+.header {
+    flex-direction: column;
+    height: 100vh;
+    width: 20%;
+    align-items: center;
+    display: flex;
+    background-color: rgba(0,0,0,0.9);
+    font-size: 1rem;
+    position: fixed;
+}
+
+.navBar {
+    display: inline;
+
+}
+.soundbars{
+    width: 94%;
+}
+.fontXSm{
+    font-size: 0.8rem;
+}
+
+.headerTitle{
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    margin-left: 1%;
+
+
+}
+ul{
+    margin-right: 5%;
+    text-decoration: none;
+    color: white;
+    margin-top: 2.2%;
+}
+li{
+    padding: 15px;
+    list-style: none;
+}
+
+.redText{
+    color: red;
+}
+
+.marginTop30{
+    margin-top: 30%;
+    justify-content: center;
+    align-items: center;
+}

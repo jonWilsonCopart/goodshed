@@ -1,0 +1,65 @@
+.middle-container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex: 2;
+    background-image: url("../../assets/imgs/blublk.png");
+    background-size: contain;
+    justify-content: space-between;
+    font-size: 1em;
+    height: 700px;
+    padding: 20px;
+    border-top: 20px;
+    border-bottom: 2px;
+    border-color: #F5F5F5;
+
+}
+
+.picture-border{
+    border-right: 2px solid #DADADA;
+    flex: 1;
+}
+
+.middle-bg{
+    background-image: url('../../assets/imgs/Christian-BW.svg');
+    color: white;
+    flex: 1;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /*-webkit-clip-path: polygon(0% 21%, 24% 0%, 100% 0%, 100% 100%, 0% 100%);*/
+    /*clip-path: polygon(0% 15%, 11% 0%, 100% 0%, 100% 100%, 0% 100%);*/
+
+
+
+}
+
+.middle-title {
+    color: white;
+    font-size: 5rem;
+
+}
+
+.middle-sub-section-container{
+    flex: 1;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    text-align: center;
+    max-height: 250px;
+    margin-right: 3px;
+    color: black;
+    /*text-align: left;*/
+    padding: 20px;
+}
+
+.middle-sub-section{
+    flex: 1;
+    border-bottom: 1px solid #DADADA;
+    border-top: 1px solid #DADADA;
+
+
+}
+.redText{
+    color: red;
+
+}

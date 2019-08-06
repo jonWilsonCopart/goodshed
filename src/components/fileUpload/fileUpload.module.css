@@ -1,0 +1,200 @@
+.outerContainer{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.container{
+    background-color: #191919;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    flex-direction: row;
+    flex: 1;
+}
+
+.aPanel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 80%;
+    height: 80%;
+    background-color: #059df5;
+}
+
+.options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 60px;
+    margin: 5px;
+    background-color: #191919;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.btn {
+
+    border: 0px solid white;
+    border-bottom: 1px solid white;
+    color: white;
+    background-color: #191919;
+    padding: 8px 20px;
+    /*border-radius: 2px;*/
+    font-size: 3.5rem;
+    font-weight: bold;
+    cursor: pointer;
+
+
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+
+}
+
+* { box-sizing:border-box; }
+
+/* basic stylings ------------------------------------------ */
+h2 small {
+    font-weight:normal;
+    color:#888;
+    display:block;
+}
+.footer 	{ text-align:center; }
+.footer a  { color:#53B2C8; }
+
+/* form starting stylings ------------------------------- */
+.group 			  {
+    position:relative;
+    margin-bottom:45px;
+}
+input 				{
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+    color:#999;
+    font-size:18px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    left:5px;
+    top:10px;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+    top:-20px;
+    font-size:14px;
+    color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+    content:'';
+    height:2px;
+    width:0;
+    bottom:1px;
+    position:absolute;
+    background:#5264AE;
+    transition:0.2s ease all;
+    -moz-transition:0.2s ease all;
+    -webkit-transition:0.2s ease all;
+}
+.bar:before {
+    left:50%;
+}
+.bar:after {
+    right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position:absolute;
+    height:60%;
+    width:100px;
+    top:25%;
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+    from { background:#5264AE; }
+    to 	{ width:0; background:transparent; }
+}
+
+/*.formStyle{*/
+    /*margin: 10px;*/
+    /*display: flex;*/
+    /*flex-flow: row wrap;*/
+    /*justify-content: space-between;*/
+/*}*/
+
+/*.clientNameInput{*/
+    /*min-width:150px;*/
+    /*margin: 3px;*/
+    /*padding: 0 10px;*/
+    /*border-radius: 3px;*/
+    /*height: 40px;*/
+    /*flex: 2;*/
+/*}*/
+
+/*.clientReviewInput{*/
+    /*min-width: 500px;*/
+    /*margin: 3px;*/
+    /*padding: 0 10px;*/
+    /*border-radius: 3px;*/
+    /*height: 40px;*/
+    /*flex: 2;*/
+/*}*/

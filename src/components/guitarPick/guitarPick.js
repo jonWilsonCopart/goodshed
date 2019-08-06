@@ -3,8 +3,9 @@ import Logo from '../logo/logo.js';
 
 const GuitarPick = (props) => {
   let imageStyle = {
-    height: '100px',
-    alignSelf: 'center',
+    width: '100%',
+
+    // alignSelf: 'center',
 
   }
   let flexStyle
@@ -16,10 +17,12 @@ const GuitarPick = (props) => {
       alignItems: props.alignItems || 'flex-start'
     }
 
+    let oldDivStyle = {maxHeight: '400px', display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', position: 'relative'}
+
   }
   return (
-    <div style={{maxHeight: '400px', display: 'flex', flex: '1', justifyContent: 'center', alignItems: 'center', position: 'relative'}}>
-      <Logo isFlex={props.isFlex} imageStyle={imageStyle}/>
+    <div style={props.style}>
+      <Logo isFlex={props.isFlex} imageStyle={imageStyle} logoStyle={props.logoStyle}/>
       <p style={{color: 'red', fontSize: '3rem', position: 'absolute'}}>{props.text}</p>
       <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
            width={props.width} height={props.height} viewBox="0 0 1079.000000 1280.000000"

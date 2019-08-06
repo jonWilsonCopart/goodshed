@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Logo from '../logo/logo.js'
-import styles from  './middleContent.module.css'
+import Logo from '../../components/logo/logo.js'
+import { ReactComponent as ChristianPhoto} from "../../assets/imgs/Christian-BW.svg"
+import styles from './middleContent.module.css'
 
 
 class MiddleContent extends Component {
@@ -12,7 +13,6 @@ class MiddleContent extends Component {
 
   componentDidMount() {
     this.updateWindowDimensions();
-    console.log(this.state)
     window.addEventListener('resize', this.updateWindowDimensions);
   }
 
@@ -27,11 +27,13 @@ class MiddleContent extends Component {
 
     return (
       <div className={styles["middle-container"]}>
-        <div className={styles["middle-bg"]}>
+        <div className={styles["picture-border"]}>
+          <ChristianPhoto />
         </div>
-        <div className={styles["middle-sub-section"]}>
-          <p className={styles["middle-title"]}>This is just test text</p>
-          <p style={{fontSize: '3rem'}}>Additional extra text to <span className={styles.redText}>see the idea...</span></p>
+        <div className={styles["middle-sub-section-container"]}>
+          <div className={styles["middle-sub-section"]}>
+            <p className={styles["middle-title"]}>All Equipment  <span className={styles.redText}></span></p>
+          </div>
         </div>
 
       </div>

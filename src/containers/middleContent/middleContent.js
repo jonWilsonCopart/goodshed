@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import './lowerContent.css'
+import Logo from '../../components/logo/logo.js'
+import { ReactComponent as ChristianPhoto} from "../../assets/imgs/Christian-BW.svg"
+import styles from './middleContent.module.css'
 
 
-class LowerContent extends Component {
+class MiddleContent extends Component {
   constructor(props) {
     super(props);
     this.state = { width: 0, height: 0 };
@@ -11,7 +13,6 @@ class LowerContent extends Component {
 
   componentDidMount() {
     this.updateWindowDimensions();
-    console.log(this.state)
     window.addEventListener('resize', this.updateWindowDimensions);
   }
 
@@ -25,12 +26,14 @@ class LowerContent extends Component {
   render() {
 
     return (
-      <div className={"lower-container"}>
-        <div className={"lower-bg"}>
+      <div className={styles["middle-container"]}>
+        <div className={styles["picture-border"]}>
+          <ChristianPhoto />
         </div>
-        <div className={"lower-sub-section"}>
-          <p className={"lower-title"}>This is just test text</p>
-          <p style={{fontSize: '3rem'}}>Additional extra text to <span id={'redText'}>see the idea...</span></p>
+        <div className={styles["middle-sub-section-container"]}>
+          <div className={styles["middle-sub-section"]}>
+            <p className={styles["middle-title"]}>All Equipment  <span className={styles.redText}></span></p>
+          </div>
         </div>
 
       </div>
@@ -38,4 +41,4 @@ class LowerContent extends Component {
   }
 }
 
-export default LowerContent;
+export default MiddleContent;

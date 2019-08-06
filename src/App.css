@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+@import '~video-react/dist/video-react.css';
+
 *{
   margin: 0;
   padding: 0;
 }
 .App {
-  display: flex;
   flex: 1;
-  font-family: 'Amatic SC', cursive;
-  font-size: 1em;
-  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1vw;
+
+
 
 }
 

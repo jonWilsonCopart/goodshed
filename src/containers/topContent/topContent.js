@@ -5,9 +5,15 @@ import styles from './topContent.module.css'
 let active = 'active'
 
 let textArr = [
-  <p className={`${styles["top-title"]} ${styles["fontMd"]} ${styles['fadeIn']}`}>Good <span className={`${styles['redText']} ${styles['fontXMd']} `}>Music</span></p>,
-  <p className={`${styles["top-title"]} ${styles["fontMd"]}`}>Good <span className={`${styles['redText']} ${styles['fontXMd']} ${styles['text-pop-up-top']}`}>Vibes</span></p>,
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1}}>
+  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1}}>
+    <p className={`${styles["top-title"]} ${styles["fontMd"]} ${styles['fadeIn']}`}>Good</p>
+    <p className={`${styles['redText']} ${styles["fontMd"]} ${styles['fadeIn']} `}>Music</p>
+  </div>,
+  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1}}>
+    <p className={`${styles["top-title"]} ${styles["fontMd"]}`}>Good</p>
+    <p className={`${styles['redText']} ${styles["fontMd"]}`}>Vibes</p>
+  </div>,
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, maxWidth: window.innerWidth / 2}}>
     <p className={`${styles["top-title"]} ${styles['focus-in-contract-bck']} ${styles['fontXL']}`}>Good<span className={`${styles.redText} ${active}`} >Shed</span></p>
     <p className={`${styles["top-title"]} ${styles['delayed-fadeIn']} ${styles['fontXSm']} ${styles['altFontTeko']}`}>Studio</p>
   </div>
@@ -83,7 +89,7 @@ class TopContent extends Component {
 
     return (
 
-        <div className={styles["inner-border"]} style={innerBorder}>
+        <div className={styles["inner-border"]} >
           {this.displayHeadline()}
         </div>
     );

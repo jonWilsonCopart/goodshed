@@ -8,17 +8,16 @@ import styles from './videoModal.module.css'
 class VideoModal extends Component {
 
   render() {
-    const { closeModal } = this.props;
+    const { closeModal, videos } = this.props;
+    console.log(videos[0])
     return (
       <div style={{position: "fixed"}} className={styles.background}>
         <div className={styles.background} style={{position: "relative"}}>
             <div className={styles.container}>
               <div className={styles.playerContainer}>
-                <div style={{height: "100%", width: "50vw"}}>
-                  <Player playsInline>
-                    <source src={"https://media.w3.org/2010/05/sintel/trailer_hd.mp4"} />
-                  </Player>
-                </div>
+                    <iframe width="560" height="315" src={videos[0].url} frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen></iframe>
               </div>
             </div>
         <div
@@ -28,7 +27,7 @@ class VideoModal extends Component {
         </div>
         </div>
         <div className={styles.queueContainer}>
-          <div className={styles.tool}><span style={{color: "whitesmoke", }}>- Tool -</span></div>
+          <div><span style={{color: "whitesmoke", }}><img src={videos[0].thumbnail[0]} />- Tool -</span></div>
           <div className={styles.tool}><span style={{color: "whitesmoke", }}>- Tool -</span></div>
           <div className={styles.tool}><span style={{color: "whitesmoke", }}>- Tool -</span></div>
           <div className={styles.tool}><span style={{color: "whitesmoke", }}>- Tool -</span></div>

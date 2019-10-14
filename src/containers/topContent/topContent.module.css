@@ -1,5 +1,7 @@
 .inner-border{
     /*overflow: auto;*/
+    flex: 1;
+    display: flex;
     font-size: 1em;
     z-index: 200;
     color: white;
@@ -8,6 +10,7 @@
 
 .top-title {
     margin-top: 0%;
+
 }
 
 /*Font Styles*/
@@ -33,6 +36,11 @@
 .fontXSm{
     font-size: 3em;
 }
+
+@media (max-width: 680px){
+
+}
+
 
 .fadeIn {
     opacity: 1;

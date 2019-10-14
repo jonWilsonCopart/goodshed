@@ -5,7 +5,7 @@
     align-items: center;
     display: flex;
     background-color: rgba(0,0,0,0.9);
-    font-size: 1rem;
+    font-size: 1em;
     position: fixed;
 }
 
@@ -22,11 +22,9 @@
 
 .headerTitle{
     color: white;
-    font-size: 2rem;
+    font-size: 1em;
     margin: 0;
     margin-left: 1%;
-
-
 }
 ul{
     margin-right: 5%;
@@ -47,4 +45,13 @@ li{
     margin-top: 30%;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 680px) {
+    .headerTitle{
+        color: white;
+        font-size: 1em;
+        margin: 0;
+        margin-left: 1%;
+    }
 }

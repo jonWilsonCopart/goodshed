@@ -41,7 +41,7 @@
 }
 
 .tool{
-    background-image: url("../../assets/imgs/tool_thumb.png");
+    /*background-image: url("../../assets/imgs/tool_thumb.png");*/
     background-repeat: no-repeat;
     background-size: cover;
     min-width: 200px;

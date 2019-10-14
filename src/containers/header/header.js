@@ -15,7 +15,6 @@ class Navbar extends Component {
   }
 
   render() {
-    console.log(this.props.style)
     return (
       <div className={styles.header} style={this.props.style}>
         <div className={styles.marginTop30}>

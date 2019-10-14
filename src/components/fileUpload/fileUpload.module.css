@@ -39,7 +39,6 @@
     position: relative;
     overflow: hidden;
     display: inline-block;
-    cursor: pointer;
     display: flex;
     flex: 1;
     justify-content: space-evenly;
@@ -48,22 +47,44 @@
 .btn {
 
     border: 0px solid white;
-    border-bottom: 1px solid white;
+    /*border-bottom: 1px solid white;*/
     color: white;
     background-color: #191919;
     padding: 8px 20px;
     /*border-radius: 2px;*/
-    font-size: 3.5rem;
+    font-size: 2em;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 30px;
 
 
 }
+.submitBtn{
+    flex: 1;
+    background-color: #191919;
+    color: white;
+    font-size: 1.3em;
+    font-family: Lato, sans-serif;
+    cursor: pointer;
+    align-self: center;
+}
+
+.review{
+    width: 600px;
+    height: 300px;
+    border: 3px solid #cccccc;
+    padding: 5px;
+    font-size: 1.3em;
+    font-family: Lato, sans-serif;
+    resize: none;
+    margin-top: 10%;
+}
 
 .upload-btn-wrapper input[type=file] {
-    font-size: 100px;
+    font-size: 7em;
+    background-color: deeppink;
     position: absolute;
-    left: 0;
+    left: 20;
     top: 0;
     opacity: 0;
     cursor: pointer;
@@ -85,11 +106,14 @@ h2 small {
 .group 			  {
     position:relative;
     margin-bottom:45px;
+    display: inline;
+    justify-content: center;
+    align-items: center;
 }
 input 				{
-    font-size:18px;
+    font-size:1.3em;
     padding:10px 10px 10px 5px;
-    display:block;
+    display:inline;
     width:300px;
     border:none;
     border-bottom:1px solid #757575;
@@ -111,10 +135,15 @@ label 				 {
 }
 
 /* active state */
-input:focus ~ label, input:valid ~ label 		{
-    top:-20px;
-    font-size:14px;
-    color:#5264AE;
+input:focus ~ label		{
+    /*top:-20px;*/
+    font-size: 2em;
+    color: #ffffff;
+}
+textarea:focus ~ label	{
+    /*top:-20px;*/
+    font-size: 2em;
+    color: #ffffff;
 }
 
 /* BOTTOM BARS ================================= */
@@ -145,7 +174,7 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
 /* HIGHLIGHTER ================================== */
 .highlight {
     position:absolute;
-    height:60%;
+    /*height:60%;*/
     width:100px;
     top:25%;
     left:0;

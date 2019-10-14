@@ -22,19 +22,19 @@ class Admin extends Component {
       <div className={`${styles.container}`}>
         <div className={`${styles.aPanel}`}>
           <div className={`${styles.options}`}>
-            <h1>Edit Testimonials</h1>
+            <h3>Edit Testimonials</h3>
           </div>
           <div className={`${styles.options}`}>
-            <h1>Upload Artwork</h1>
+            <h3>Upload Artwork</h3>
           </div>
           <div className={`${styles.options}`}>
-            <h1>Edit Gear List</h1>
+            <h3>Edit Gear List</h3>
           </div>
           <div className={`${styles.options}`}>
-            <h1>Edit "About"</h1>
+            <h3>Edit "About"</h3>
           </div>
           <div className={`${styles.options}`}>
-            <h1>Logout</h1>
+            <h3>Logout</h3>
           </div>
         </div>
         <EditTestimonials />

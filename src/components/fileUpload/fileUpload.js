@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 // File Imports
+import instance from "../../axios/instance";
 
 import styles from './fileUpload.module.css'
 
@@ -13,7 +14,9 @@ class FileUpload extends Component {
       loaded: 0,
       showFormFields: false,
       clientName: "",
-      clientReview: ""
+      clientReview: "",
+      review: "",
+      textAreaFilled: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelectedFile = this.handleSelectedFile.bind(this);
@@ -22,8 +25,15 @@ class FileUpload extends Component {
     this.showForm = this.showForm.bind(this);
   }
 
-  handleSubmit(){
-
+  handleSubmit(event){
+    const data = {
+        name: this.state.clientName,
+        review: this.state.review
+    };
+    event.preventDefault();
+    instance.get("/reviews/all", data)
+      .then((resp) => console.log(resp))
+      .catch((err) => console.log(err));
   }
 
   handleSelectedFile(event){
@@ -36,7 +46,7 @@ class FileUpload extends Component {
 
     return (
       <div className={styles['upload-btn-wrapper']}>
-        <h2 className={styles.btn}>Select Photo</h2>
+        <h3 className={styles.btn}>Select Photo</h3>
         <input type={'file'} name={"cPhoto"} id={""} onChange={this.handleSelectedFile} />
       </div>
     )
@@ -51,29 +61,27 @@ class FileUpload extends Component {
     )
   }
 
+
+
   showForm(){
-    const { showFormFields } = this.state
+    const { showFormFields, textAreaFilled } = this.state
     if( showFormFields ){
       return (
-        <div style={{display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'blue', height: '500px'}}>
-          <form>
-            <div className="group">
-              <input type="text" required
+        <div style={{display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center', height: '500px', position: "relative"}}>
+          <form style={{position: "relative", marginTop: 5, display: "flex", flexDirection: "column", justifyContent: "center"}} onSubmit={this.handleSubmit}>
+            <div style={{justifyContent: "center", alignItems: "center", display: "flex", position: "relative"}}>
+              <input type="text" name={'name'} required
                      value={ this.state.clientName }
                      onChange={ (name) => this.setState({ clientName: name.target.value }) }
-                     placeholder="Client Name"/>
-                <span className="highlight"></span>
-                <span className="bar"></span>
-                <label>Name</label>
-            </div>
+                     />
 
-            <div className="group">
-              <input type="text" required />
-                <span className="highlight"></span>
-                <span className="bar"></span>
-                <label>Email</label>
+                <label className={"nameLabel"} htmlFor="name">Name</label>
             </div>
-
+            <div style={{justifyContent: "center", alignItems: "center", display: "flex", position: "relative", marginTop: 50}}>
+              <textarea required className={styles.review} name={'review'} onChange={ (review) => this.setState({ review: review.target.value, textAreaFilled: review.target.value.length > 0 ? true : false })}></textarea>
+              <label className={textAreaFilled ? "valid" : "invalid"} htmlFor="review">Add Kind Words</label>
+            </div>
+            <input className={styles.submitBtn} type={"submit"} value={"Submit"} />
           </form>
 
           {/*<form onSubmit={ this.handleSubmit } className={styles.formStyle}>*/}
@@ -102,10 +110,11 @@ class FileUpload extends Component {
     return (
       <div className={ `${styles.outerContainer}`}>
         <div className={`${styles.container}`}>
-          {this.selectPhotoInput()}
           {this.addClientReview()}
         </div>
-        {this.showForm()}
+        <div style={{marginTop: 20}}>
+          {this.showForm()}
+        </div>
       </div>
     );
   }

@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import { peaks } from './peaks.js';
+import React, { Component, useState } from 'react';
+import Slider from 'react-slick';
 import * as _ from "lodash"
 
 // File Imports
@@ -14,15 +13,13 @@ import fb from "../../assets/imgs/facebook_icon.png"
 import ig from "../../assets/imgs/instagram_icon.png"
 import email from "../../assets/imgs/email_icon.png"
 import logo from '../../assets/imgs/goodshedLogo_v2.png'
-
-import Navbar from '../header/header.js'
 import soundwaveIcon from "../../assets/imgs/soundwave_inv.png"
 import WaveSurfer from 'wavesurfer.js'
-
-import toplogo from "../../assets/imgs/bg-1.png"
+import ContactWidget from "./contactWidget"
 import styles from './home.module.css'
-import animations from './animations.module.css'
 import instance from "../../axios/instance"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"
 
 class Home extends Component {
   constructor(props){
@@ -32,13 +29,16 @@ class Home extends Component {
       scrollAllowed: true,
       reviews: [],
       equipment: [],
-      videos:[],
+      videos: [],
       activeSong: {},
       autoPlay: false,
+      arrows: false,
       isPlaying: false,
-      inactiveLinkColor: 'red',
-      activeLinkColor: "#ffa230",
-      activeLink: "#home"
+      inactiveLinkColor: '#fff',
+      activeLinkColor: "#ff2d3c",
+      activeLink: "#home",
+      currentSlide: 0,
+      showIGContact: false
     };
 
     this.closeModal = this.closeModal.bind(this);
@@ -48,7 +48,9 @@ class Home extends Component {
     this.renderOtherGear = this.renderOtherGear.bind(this);
     this.displayAlbumCover = this.displayAlbumCover.bind(this);
     this.scrollToSection = this.scrollToSection.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
+
 
   componentWillMount(){
     instance.get("/reviews/all")
@@ -87,8 +89,8 @@ class Home extends Component {
   componentDidMount(){
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
-    }
-    document.addEventListener('scroll', _.debounce(this.trackScrolling, 250));
+    };
+    document.addEventListener('scroll', _.debounce(this.trackScrolling, 150));
   }
 
   componentWillUnmount() {
@@ -158,18 +160,36 @@ class Home extends Component {
 
   renderTestimonials(){
     const { reviews } = this.state;
-    console.log(reviews)
       return (reviews.map((review) => {
         if(review){
           return (
+            <div className={styles.testimonialContainer}>
             <div className={styles.testimonial}>
-              <p>{review.review}</p>
-              <p className={styles.marginLeftLg} style={{marginTop: 5}}>- {review.author}</p>
+              <p style={{fontSize: "2em"}}>" {review.review} "</p>
+              <div style={{flexDirection: 'column', display: 'flex', alignItems: 'center', justifyContent: "center", marginTop: 15}}>
+                {review.authorImage ?
+                  <img src={review.authorImage} className={styles.authorImage}/>
+                  : null }
+                <p>{review.author}</p>
+              </div>
+            </div>
             </div>
           )
 
       }
       }))
+  }
+
+  showIG(){
+
+  }
+
+  handleHover(type, isVisible){
+    switch(type){
+      case "ig":
+        this.setState({ showIGContact: isVisible})
+        break
+    }
   }
 
   displayAlbumCover(cover){
@@ -179,36 +199,76 @@ class Home extends Component {
   }
 
   scrollToSection(section){
-    this.setState({ activeLink: section, activeLinkColor: "#ffa230"})
+    this.setState({ activeLink: section, activeLinkColor: "#ff2d3c"})
     document.querySelector(`${section}`).scrollIntoView({
       behavior: 'smooth'
     });
   }
 
   isVisible(el) {
-    return el.getBoundingClientRect().bottom <= window.innerHeight + (window.innerHeight / 2);
+    const { bottom } =  el.getBoundingClientRect();
+    return bottom > 0 && bottom <= window.innerHeight + (window.innerHeight / 2);
   }
 
 
   trackScrolling = () => {
     const home = document.getElementById('home');
     const about = document.getElementById('about');
-    const gear = document.getElementById('gear');
-    const reviews = document.getElementById('reviews');
     const media = document.getElementById('media');
+    const reviews = document.getElementById('reviews');
+    const gear = document.getElementById('gear');
     const contact = document.getElementById('contact');
     const links = [home, about, gear, reviews, media, contact]
-    links.some(link => {
+    return links.some(link => {
       if(this.isVisible(link)){
         this.setState({activeLink: `#${link.id}`})
-        return
+        console.log(link)
+        return true;
       }
     })
   };
 
   render() {
     const { scrollAllowed, isPlaying, activeLink, inactiveLinkColor, activeLinkColor } = this.state;
-    let scrollStyle = scrollAllowed ? styles.scrollView : styles.noScrollView;
+    const testSettings = {
+      backgroundColor: '#0272df',
+      outline: '0'
+    }
+    const settings = {
+      dots: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      speed: 1700,
+      autoplaySpeed: 4000,
+      cssEase: "linear",
+      dotsClass: styles.button__bar,
+      beforeChange: (prev, next) => {
+        this.setState({ currentSlide: next });
+      },
+      // afterChange: (index) => this.setState({ currentSlide: index }),
+      appendDots: dots => {
+        return (
+          <div>
+            <ul style={{display: 'flex', flexDirection: 'row'}}>
+              {dots.map((item, index) => {
+                return (
+                  <li key={index}>{item.props.children}</li>
+                );
+              })}
+            </ul>
+          </div>
+        )
+      },
+      customPaging: index => {
+        return (
+          <button style={index === this.state.currentSlide ? testSettings : null}>
+            {index + 1}
+          </button>
+        )
+      }
+    };
     let musicURL = this.state.videos && this.state.activeSong && this.state.activeSong.url
     let albumURL = this.state.videos && this.state.activeSong && this.state.activeSong.imageUrl
     let linkColor = activeLink ? activeLinkColor : inactiveLinkColor
@@ -223,31 +283,33 @@ class Home extends Component {
 
     return (
       <div className={styles.container}>
+        <div style={{height: '50px', backgroundColor: "transparent", width: '100%'}}/>
         <div className={styles.header}>
           <div className={styles.headerFixedContent}>
-            <div style={{alignItems: "center", justifyContent: "center", display: "flex"}}>
+            <div>
               <p className={styles.headerTitle}>Good<span className={styles.redText}>Shed</span><span className={`${styles['fontXSm']}`}>Studio.com</span></p>
             </div>
             {/*<Logo imageStyle={logoStyle}/>*/}
-            <div style={{justifyContent: "center", alignItems: "center", display: "flex"}}>
-              <img src={soundwaveIcon} alt={"soundwave"} className={styles.soundbars} />
-            </div>
-            <div className={styles.navList}>
-              <p style={{color: activeLink === "#home" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#home")}>Home</p>
-              <p style={{color: activeLink === "#about" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#about")}>About</p>
-              <p style={{color: activeLink === "#gear" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#gear")}>Gear</p>
-              <p style={{color: activeLink === "#reviews" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#reviews")}>Testimonials</p>
-              <p style={{color: activeLink === "#media" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#media")}>Media</p>
-              <p style={{color: activeLink === "#contact" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#contact")}>Contact</p>
-            </div>
+            {/*<div style={{justifyContent: "center", alignItems: "center", display: "flex"}}>*/}
+              {/*<img src={soundwaveIcon} alt={"soundwave"} className={styles.soundbars} />*/}
+            {/*</div>*/}
+          </div>
+          <div className={styles.navList}>
+            <p style={{color: activeLink === "#home" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#home")}>Home</p>
+            <p style={{color: activeLink === "#about" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#about")}>About</p>
+            <p style={{color: activeLink === "#media" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#media")}>Media</p>
+            <p style={{color: activeLink === "#reviews" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#reviews")}>Testimonials</p>
+            <p style={{color: activeLink === "#gear" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#gear")}>Gear</p>
+            <p style={{color: activeLink === "#contact" ? activeLinkColor : inactiveLinkColor, cursor: 'pointer' }} onClick={() => this.scrollToSection("#contact")}>Contact</p>
           </div>
         </div>
+        {<ContactWidget />}
         {/*<div style={{backgroundColor: "black", flex: 1}}></div>*/}
         <div style={{flex: 1, display: "flex", flexDirection: "column"}}>
           {this.state.modalVisible ? <VideoModal videos={this.state.videos} closeModal={this.closeModal} /> : null}
           <div className={styles.mainContent} id={"home"} >
             <div >
-              <img src={logo} style={{width: 50}} />
+              <img src={logo} style={{width: 200, position: "absolute", top: 50, left: "44vw"}} />
               {/*<Logo imageStyle={{width: 80}} />*/}
             </div>
             <div style={{ justifyContent: "center"}}>
@@ -325,11 +387,15 @@ class Home extends Component {
           </div>
           <div className={styles.divider1}></div>
           <div className={styles.mainContent4} id={"reviews"}>
-            {/*<div className={styles.mc2Left}>*/}
-            {/*<img src={cphoto} alt={"cphoto"} className={styles.cphoto} />*/}
-            {/*</div>*/}
-            <div className={styles.testimonialContainer}>
-              {this.renderTestimonials()}
+            <div style={{position: 'relative', justifyContent: 'center', alignItems: "center", display: "flex", flexDirection: 'column'}}>
+              <div style={{backgroundColor: "rgba(0,0,0,0.5)", height: 80, display: "flex", width: '100%', justifyContent: "center", marginTop: 10, alignItems: "center"}}>
+                <h1 style={{color: "white"}}>Reviews</h1>
+              </div>
+              <div>
+                <Slider {...settings} style={{marginTop: '2%', maxWidth: "85vw"}}>
+                  {this.renderTestimonials()}
+                </Slider>
+              </div>
             </div>
           </div>
           <div className={styles.divider1}></div>
@@ -365,13 +431,13 @@ class Home extends Component {
             </div>
           </div>
           <div className={styles.divider1}></div>
-          <div className={styles.mainContent5} id={"contact"}>
+          <div className={`${styles.mainContent5} ${styles.contactSection}`} id={"contact"}>
             {/*<div className={styles.mc2Left}>*/}
             {/*<img src={cphoto} alt={"cphoto"} className={styles.cphoto} />*/}
             {/*</div>*/}
-            <div style={{flex: 1, flexDirection: "row", alignItems: 'flex-start', justifyContent: "flex-start", display: "flex"}}>
-              <div style={{flex: 0.5, padding: 30, backgroundColor: "rgba(1,1,1,0.5)", borderWidth: 1, borderColor: "#687eff", borderRadius: 5}}>
-                <div className={styles.fullHeightWidth} style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+            <div className={styles.contactSection} style={{flex: 1, flexDirection: "row", alignItems: 'flex-start', justifyContent: "flex-start", display: "flex"}}>
+              <div className={styles.contactSection} style={{flex: 1, padding: 30, backgroundColor: "rgba(1,1,1,0.5)", borderWidth: 1, borderColor: "#687eff", borderRadius: 5}}>
+                <div className={`${styles.fullHeightWidth} ${styles.contactSection}`} style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                   <ul>
                     <li style={{paddingLeft: 0}}><h1 style={{color: "red"}}>Contact</h1></li>
                     <li style={{paddingLeft: 0}}><p style={{color: "white"}}>Christian Deibert</p></li>
